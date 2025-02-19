@@ -17,8 +17,10 @@ docker run --name postgres_db -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=pos
 ```
 ### Schritt 2
 Öffnen Sie den geclonten Backend Ordner in Ihrer Umgebung und klicken Sie auf den Gradle Button, der sich auf der rechten Seite ihrer Umgebung befindet.
+klicken sie auf den Bootrun welcher in der folgenden Reihenfolge zu finden ist: demo>Tasks>application>bootrun.
 
-![image](https://github.com/user-attachments/assets/3151c457-17ed-4866-bf48-db2f0ca97cd4)
+<img width="288" alt="image" src="https://github.com/user-attachments/assets/ef3f61f5-5351-4b98-a135-32c6a13a64be" />
+
 
 
 ### Schritt 3
