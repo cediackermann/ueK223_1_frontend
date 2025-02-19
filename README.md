@@ -17,6 +17,7 @@ docker run --name postgres_db -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=pos
 ```
 ### Schritt 2
 Öffnen Sie den geclonten Backend Ordner in Ihrer Umgebung und klicken Sie auf den Gradle Button, der sich auf der rechten Seite ihrer Umgebung befindet.
+
 ![image](https://github.com/user-attachments/assets/3151c457-17ed-4866-bf48-db2f0ca97cd4)
 
 
