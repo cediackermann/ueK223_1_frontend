@@ -6,6 +6,7 @@ import UserTable from '../components/pages/UserPage/UserTable';
 import UserPage from '../components/pages/UserPage/UserPage';
 import AdminPage from '../components/pages/adminPage/AdminPage';
 import authorities from '../config/Authorities';
+import UserDashboard from "../components/pages/UserDashboard";
 
 /**
  * Router component renders a route switch with all available pages
@@ -21,6 +22,14 @@ const Router = () => {
                 element={
                     <PrivateRoute requiredAuths={[]}>
                         <UserTable />
+                    </PrivateRoute>
+                }
+            />
+            <Route
+                path={'/dashboard'}
+                element={
+                    <PrivateRoute requiredAuths={[]}>
+                        <UserDashboard />
                     </PrivateRoute>
                 }
             />
