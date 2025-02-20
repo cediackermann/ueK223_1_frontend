@@ -4,10 +4,7 @@ import PrivateRoute from './PrivateRoute';
 import HomePage from '../components/pages/HomePage';
 import UserTable from '../components/pages/UserPage/UserTable';
 import UserPage from '../components/pages/UserPage/UserPage';
-import UserDashboard from '../components/pages/UserDashboard';
-import AdminPage from '../components/pages/AdminPage';
-import UserProfile from '../components/pages/UserProfile';
-import CustomListPage from '../components/pages/CustomList';
+import AdminPage from '../components/pages/adminPage/AdminPage';
 import authorities from '../config/Authorities';
 
 /**
@@ -44,34 +41,10 @@ const Router = () => {
                 }
             />
             <Route
-                path={'/dashboard'}
-                element={
-                    <PrivateRoute requiredAuths={[]}>
-                        <UserDashboard />
-                    </PrivateRoute>
-                }
-            />
-            <Route
                 path={'/admin'}
                 element={
                     <PrivateRoute requiredAuths={[authorities.USER_CREATE]}>
                         <AdminPage />
-                    </PrivateRoute>
-                }
-            />
-            <Route
-                path={'/profile'}
-                element={
-                    <PrivateRoute requiredAuths={[authorities.PROFILE_EDIT]}>
-                        <UserProfile />
-                    </PrivateRoute>
-                }
-            />
-            <Route
-                path={'/my-list'}
-                element={
-                    <PrivateRoute requiredAuths={[authorities.LIST_MANAGE]}>
-                        <CustomListPage />
                     </PrivateRoute>
                 }
             />
