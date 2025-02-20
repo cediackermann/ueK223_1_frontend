@@ -71,6 +71,19 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="ueK223_1_frontend" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="ueK223_1_frontend" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -92,9 +105,15 @@
       <workItem from="1739953356016" duration="33000" />
       <workItem from="1739953430120" duration="833000" />
       <workItem from="1739954283368" duration="1184000" />
+<<<<<<< Updated upstream
       <workItem from="1739961273055" duration="884000" />
       <workItem from="1739967999764" duration="6047000" />
       <workItem from="1739974990330" duration="13000" />
+=======
+      <workItem from="1739957890448" duration="300000" />
+      <workItem from="1739959252269" duration="116000" />
+      <workItem from="1739959382459" duration="781000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>
