@@ -5,7 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bd7aa6ae-ffd6-4153-bd6b-e529583c2842" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/ueK223_1_frontend.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react_frontend/src/Services/CustumList.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react_frontend/src/components/pages/AdminPage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react_frontend/src/components/pages/CustomList.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react_frontend/src/components/pages/UserDashboard.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react_frontend/src/components/pages/UserProfile.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_frontend/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/react_frontend/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_frontend/src/Router/PrivateRoute.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/react_frontend/src/Router/PrivateRoute.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_frontend/src/Router/Router.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/react_frontend/src/Router/Router.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_frontend/src/components/atoms/platzhalter.txt" beforeDir="false" afterPath="$PROJECT_DIR$/react_frontend/src/Services/UserProfile.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_frontend/src/components/pages/LoginPage/LoginPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/react_frontend/src/components/pages/LoginPage/LoginPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_frontend/src/config/Authorities.ts" beforeDir="false" afterPath="$PROJECT_DIR$/react_frontend/src/config/Authorities.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_frontend/src/config/Roles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/react_frontend/src/config/Roles.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react_frontend/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/react_frontend/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +46,9 @@
   &quot;associatedIndex&quot;: 8
 }</component>
   <component name="ProjectId" id="2tFg0eqlEVDBiXEq8sEjUP9xe9s" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -39,22 +57,24 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/loris/Documents/GitHub/ueK223_1_backend",
+    "last_opened_file_path": "C:/Noser_ük_223/ueK223_1_backend/spring_backend",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "C:\\Noser_ük_223\\ueK223_1_frontend\\react_frontend\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-125ca727e0f0-intellij.indexing.shared.core-IU-243.23654.189" />
-        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-IU-243.23654.189" />
+        <option value="bundled-js-predefined-d6986cc7102b-76f8388c3a79-JavaScript-WS-243.24978.60" />
       </set>
     </attachedChunks>
   </component>
@@ -72,6 +92,9 @@
       <workItem from="1739953356016" duration="33000" />
       <workItem from="1739953430120" duration="833000" />
       <workItem from="1739954283368" duration="1184000" />
+      <workItem from="1739961273055" duration="884000" />
+      <workItem from="1739967999764" duration="6047000" />
+      <workItem from="1739974990330" duration="13000" />
     </task>
     <servers />
   </component>
