@@ -42,9 +42,7 @@ const PrivateRoute: React.FC<Props> = ({ requiredAuths, children }) => {
       requiredAuths.length === 0 ||
       requiredAuths.every(AuthorityService.hasAuthority);
 
-  if (!hasNeededAuthorities) {
-    return <Navigate to='/unauthorized' replace={true} />;
-  }
+
 
   return <>{children}</>;
 };
