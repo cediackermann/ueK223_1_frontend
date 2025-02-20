@@ -13,18 +13,11 @@ import * as Yup from 'yup';
 import ActiveUserContext from '../../../Contexts/ActiveUserContext';
 
 const validationSchema = Yup.object().shape({
-  email: Yup.string(),
-  password: Yup.string(),
+  email: Yup.string().email('Invalid email').required('Required'),
+  password: Yup.string().required('Required'),
 });
 
 const Login = () => {
-  const paperStyle = {
-    padding: 20,
-    height: '70vh',
-    width: 280,
-    margin: '20px auto',
-  };
-  const btnstyle = { margin: '8px 0' };
   const navigate = useNavigate();
   const { login } = useContext(ActiveUserContext);
 
@@ -35,88 +28,110 @@ const Login = () => {
           navigate('/dashboard');
         })
         .catch((error) => {
-          if (
-              (typeof error.response !== 'undefined' &&
-                  error.response.status === 401) ||
-              error.response.status === 403
-          ) {
-            alert('invalid login');
+          if (error.response?.status === 401 || error.response?.status === 403) {
+            alert('Invalid login');
           } else {
-            alert('login Error');
+            alert('Login Error');
           }
         });
   };
+
   return (
-      <Grid>
-        <Paper elevation={10} style={paperStyle}>
-          <Grid>
-            <h2>Sign In</h2>
-            <p>Default login:</p>
-            <p>email: admin@example.com</p>
-            <p>pw: 1234</p>
-          </Grid>
+      <Grid
+          container
+          justifyContent="center"
+          alignItems="center"
+          height="100vh"
+          sx={{
+            background: 'linear-gradient(135deg, #0f0fcf, #00d4ff)',
+          }}
+      >
+        <Paper
+            elevation={10}
+            sx={{
+              padding: 4,
+              width: 320,
+              backgroundColor: 'rgba(255, 255, 255, 0.2)',
+              backdropFilter: 'blur(10px)',
+              color: '#fff',
+              textAlign: 'center',
+            }}
+        >
+          <Typography variant="h4" gutterBottom sx={{ fontWeight: 'bold' }}>
+            Sign In
+          </Typography>
+          <Typography variant="body2">Default login:</Typography>
+          <Typography variant="body2">Email: admin@example.com</Typography>
+          <Typography variant="body2">PW: 1234</Typography>
 
           <Formik
-              initialValues={{
-                email: '',
-                password: '',
-              }}
-              enableReinitialize
+              initialValues={{ email: '', password: '' }}
               validationSchema={validationSchema}
               onSubmit={handleSubmit}
-              validateOnChange
-              isInitialValid
           >
-            {(props) => (
-                <Form onSubmit={props.handleSubmit}>
+            {({ values, handleChange, handleBlur, handleSubmit, errors }) => (
+                <form onSubmit={handleSubmit}>
                   <TextField
-                      label='email'
-                      id='email'
-                      placeholder='Enter username'
+                      label="Email"
+                      id="email"
+                      placeholder="Enter email"
                       fullWidth
                       required
-                      autoFocus
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.email}
+                      margin="normal"
+                      InputProps={{
+                        style: { color: '#fff' },
+                      }}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.email}
+                      sx={{ '& label': { color: '#fff' }, '& .MuiOutlinedInput-root': { borderColor: '#fff' } }}
                   />
-                  {props.errors.email && (
-                      <div id='feedback'>{props.errors.email}</div>
-                  )}
+                  {errors.email && <Typography color="error">{errors.email}</Typography>}
 
                   <TextField
-                      id='password'
-                      label='password'
-                      placeholder='Enter password'
-                      type='password'
+                      id="password"
+                      label="Password"
+                      placeholder="Enter password"
+                      type="password"
                       fullWidth
                       required
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.password}
+                      margin="normal"
+                      InputProps={{
+                        style: { color: '#fff' },
+                      }}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.password}
+                      sx={{ '& label': { color: '#fff' }, '& .MuiOutlinedInput-root': { borderColor: '#fff' } }}
                   />
-                  {props.errors.password && (
-                      <div id='feedback'>{props.errors.password}</div>
-                  )}
+                  {errors.password && <Typography color="error">{errors.password}</Typography>}
 
                   <Button
-                      type='submit'
-                      color='primary'
-                      variant='contained'
-                      style={btnstyle}
+                      type="submit"
+                      variant="contained"
                       fullWidth
+                      sx={{
+                        mt: 2,
+                        backgroundColor: '#00d4ff',
+                        '&:hover': { backgroundColor: '#0f0fcf' },
+                      }}
                   >
                     Sign in
                   </Button>
-                </Form>
+                </form>
             )}
           </Formik>
-          <Typography>
-            <Link href='#'>Forgot password ?</Link>
+
+          <Typography sx={{ mt: 2 }}>
+            <Link href="#" color="inherit">
+              Forgot password?
+            </Link>
           </Typography>
           <Typography>
-            {' '}
-            Do you have an account ?<Link href='#'>Sign Up</Link>
+            Don't have an account?{' '}
+            <Link href="#" color="inherit">
+              Sign Up
+            </Link>
           </Typography>
         </Paper>
       </Grid>
