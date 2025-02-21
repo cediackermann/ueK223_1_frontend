@@ -1,5 +1,8 @@
-# README #
+# README 
 Repository of backend: https://github.com/cediackermann/ueK223_1_backend
+# Documentation
+Find our Documentation here: [Projektdokumentation](./Projekt%20Dokumentation.pdf)
+
 # uk223 Skeleton
 
 homepage: http://localhost:3000
