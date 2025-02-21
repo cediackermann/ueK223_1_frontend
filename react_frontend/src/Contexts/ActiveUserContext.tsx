@@ -6,6 +6,9 @@ import AuthorityService from "../Services/AuthorityService";
 import UserService from "../Services/UserService";
 import { User } from "../types/models/User.model";
 import { Nullable } from "../types/Nullable";
+import * as jwt from "jsonwebtoken";
+import {JwtPayload} from "jsonwebtoken";
+import {unmountComponentAtNode} from "react-dom";
 
 /**
  * USER_DATA_LOCAL_STORAGE_KEY defines the localStorageKey in which the
@@ -52,7 +55,7 @@ const defaultContextValue: ActiveUserContextType = {
  * and logout.
  */
 const ActiveUserContext =
-  createContext<ActiveUserContextType>(defaultContextValue);
+    createContext<ActiveUserContextType>(defaultContextValue);
 export default ActiveUserContext;
 
 /**
@@ -68,8 +71,8 @@ type ActiveUserContextProviderProps = {
  * @param children consists of all the elements that are located inside the
  */
 export const ActiveUserContextProvider = ({
-  children,
-}: ActiveUserContextProviderProps) => {
+                                            children,
+                                          }: ActiveUserContextProviderProps) => {
   /**
    * Try to load the user data that is stored inside the LocalStorage.
    * If non is present, null will be returned.
@@ -91,8 +94,8 @@ export const ActiveUserContextProvider = ({
   const setActiveUser = (updatedUser: User) => {
     setUser(updatedUser);
     localStorage.setItem(
-      USER_DATA_LOCAL_STORAGE_KEY,
-      JSON.stringify(updatedUser)
+        USER_DATA_LOCAL_STORAGE_KEY,
+        JSON.stringify(updatedUser)
     );
   };
 
@@ -135,10 +138,14 @@ export const ActiveUserContextProvider = ({
     await api.post("user/login", { email, password }).then((response: any) => {
       console.log(response.headers.authorization);
       localStorage.setItem(
-        TOKEN_LOCAL_STORAGE_KEY,
-        response.headers.authorization
+          TOKEN_LOCAL_STORAGE_KEY,
+          response.headers.authorization
       );
-      setActiveUser(response.data);
+      const tokenString = response.headers.authorization.replace('Bearer ', '');
+      const token = jwt.decode(tokenString) as JwtPayload;
+      UserService.getUser(token.sub!).then((user: User) => {
+        setActiveUser(user);
+      })
       return true;
     });
     return false;
@@ -150,10 +157,10 @@ export const ActiveUserContextProvider = ({
    */
   const loadActiveUser = () => {
     return user
-      ? UserService.getUser(user.id).then((res: any) => {
+        ? UserService.getUser(user.id).then((res: any) => {
           setActiveUser(res);
         })
-      : null;
+        : null;
   };
 
   function activeUserHasRole(roleToCheck: keyof typeof roles): boolean {
@@ -184,19 +191,19 @@ export const ActiveUserContextProvider = ({
   }, [user]);
 
   return (
-    <div>
-      <ActiveUserContext.Provider
-        value={{
-          user,
-          setActiveUser,
-          login,
-          logout,
-          loadActiveUser,
-          checkRole: activeUserHasRole,
-        }}
-      >
-        {children}
-      </ActiveUserContext.Provider>
-    </div>
+      <div>
+        <ActiveUserContext.Provider
+            value={{
+              user,
+              setActiveUser,
+              login,
+              logout,
+              loadActiveUser,
+              checkRole: activeUserHasRole,
+            }}
+        >
+          {children}
+        </ActiveUserContext.Provider>
+      </div>
   );
 };
