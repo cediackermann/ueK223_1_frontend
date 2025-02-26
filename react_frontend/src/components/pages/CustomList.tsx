@@ -1,6 +1,8 @@
+// src/components/pages/CustomList/CustomListPage.tsx
 import React, { useEffect, useState } from 'react';
 import { Box, Typography, Button, List, ListItem, ListItemText } from '@mui/material';
 import CustomListService from '../../Services/CustomListService';
+import { useNavigate } from "react-router-dom";
 
 interface ListEntry {
     id: string;
@@ -10,6 +12,7 @@ interface ListEntry {
 
 const CustomListPage = () => {
     const [listEntries, setListEntries] = useState<ListEntry[]>([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchListEntries = async () => {
@@ -38,6 +41,18 @@ const CustomListPage = () => {
             </List>
             <Button variant="contained" color="primary" style={{ marginTop: 10 }} onClick={handleAddEntry}>
                 Add New Entry
+            </Button>
+            <Button
+                variant="contained"
+                sx={{
+                    mt: 2,
+                    backgroundColor: '#00d4ff',
+                    '&:hover': { backgroundColor: '#0f0fcf' },
+                }}
+                onClick={() => navigate(-1)}
+                data-cy="go-back-button"
+            >
+                Go Back
             </Button>
         </Box>
     );

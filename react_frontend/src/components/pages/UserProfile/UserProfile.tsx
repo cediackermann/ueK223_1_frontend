@@ -1,11 +1,14 @@
+// src/components/pages/UserProfile/UserProfile.tsx
 import React, { useEffect, useState } from 'react';
 import { Box, Typography, TextField, Button } from '@mui/material';
 import UserProfileService from '../../../Services/UserProfileService';
+import { useNavigate } from "react-router-dom";
 
 const UserProfile = () => {
     const [profile, setProfile] = useState({ name: '', address: '', birthdate: '', age: '' });
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchProfile = async () => {
@@ -58,6 +61,18 @@ const UserProfile = () => {
             <TextField label="Age" value={profile.age} InputProps={{ readOnly: true }} fullWidth margin="normal" />
             <Button variant="contained" color="primary" onClick={handleSave} style={{ marginTop: 10 }}>
                 Save Profile
+            </Button>
+            <Button
+                variant="contained"
+                sx={{
+                    mt: 2,
+                    backgroundColor: '#00d4ff',
+                    '&:hover': { backgroundColor: '#0f0fcf' },
+                }}
+                onClick={() => navigate(-1)}
+                data-cy="go-back-button"
+            >
+                Go Back
             </Button>
         </Box>
     );

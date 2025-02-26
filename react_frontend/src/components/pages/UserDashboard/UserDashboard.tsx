@@ -1,9 +1,12 @@
-import React from 'react';
+// src/components/pages/UserDashboard/UserDashboard.tsx
+import React, { useContext } from 'react';
 import { Box, Typography, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import ActiveUserContext from '../../../Contexts/ActiveUserContext';
 
 const UserDashboard = () => {
     const navigate = useNavigate();
+    const { logout } = useContext(ActiveUserContext); // Zugriff auf die Logout-Funktion
 
     return (
         <Box
@@ -36,6 +39,7 @@ const UserDashboard = () => {
                     '&:hover': { backgroundColor: '#0f0fcf' },
                 }}
                 onClick={() => navigate('/profile')}
+                data-cy="view-profile-button"
             >
                 View Profile
             </Button>
@@ -47,20 +51,35 @@ const UserDashboard = () => {
                     '&:hover': { backgroundColor: '#0f0fcf' },
                 }}
                 onClick={() => navigate('/my-list')}
+                data-cy="my-list-button"
             >
                 My Custom List
             </Button>
             <Button
                 variant="contained"
                 sx={{
-                    mt: 50,
+                    mt: 2,
                     backgroundColor: '#00d4ff',
                     '&:hover': { backgroundColor: '#0f0fcf' },
                 }}
                 onClick={() => navigate('/admin')}
+                data-cy="admin-page-button"
             >
                 Admin Page
             </Button>
+            <Button
+                variant="contained"
+                sx={{
+                    mt: 2,
+                    backgroundColor: '#ff5555', // Rote Farbe für Logout
+                    '&:hover': { backgroundColor: '#cc0000' },
+                }}
+                onClick={logout} // Verwende die Logout-Funktion aus dem Context
+                data-cy="logout-button"
+            >
+                Logout
+            </Button>
+
         </Box>
     );
 };
