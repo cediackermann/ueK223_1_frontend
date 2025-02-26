@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Typography, Button, List, ListItem, ListItemText } from '@mui/material';
-import CustomListService from '../../../Services/CustomListService';
+import CustomListService from '../../Services/CustomListService';
 
 interface ListEntry {
     id: string;
