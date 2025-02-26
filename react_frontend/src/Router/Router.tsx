@@ -8,6 +8,7 @@ import AdminPage from '../components/pages/adminPage/AdminPage';
 import authorities from '../config/Authorities';
 import UserDashboard from "../components/pages/UserDashboard/UserDashboard";
 import UserProfile from '../components/pages/UserProfile/UserProfile';
+import CustomListPage from "../components/pages/CustomList/CustomListPage";
 
 /**
  * Router component renders a route switch with all available pages
@@ -66,7 +67,14 @@ const Router = () => {
                     </PrivateRoute>
                 }
             />
-            <Route path='*' element={<div>Not Found</div>} />
+            <Route
+                path={'/my-list'}
+                element={
+                    <PrivateRoute requiredAuths={[authorities.LIST_MANAGE]}>
+                        <CustomListPage />
+                    </PrivateRoute>
+                }
+            />
         </Routes>
     );
 };
