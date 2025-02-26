@@ -19,6 +19,38 @@ const UserProfileService = {
             console.error("Error updating user profile:", error);
             throw error;
         }
+    },
+
+    // Neue Methode: Alle UserProfiles abrufen (nur für Admins)
+    getAllUserProfiles: async () => {
+        try {
+            const response = await api.get("/userprofile/");
+            return response.data;
+        } catch (error) {
+            console.error("Error fetching all user profiles:", error);
+            throw error;
+        }
+    },
+
+    // Neue Methode: Einzelnes UserProfile abrufen (Admin-Zugriff)
+    getUserProfileById: async (userId: string) => {
+        try {
+            const response = await api.get(`/userprofile/${userId}`);
+            return response.data;
+        } catch (error) {
+            console.error("Error fetching user profile by ID:", error);
+            throw error;
+        }
+    },
+
+    // Neue Methode: UserProfile löschen (Admin-Zugriff)
+    deleteUserProfile: async (userId:string) => {
+        try {
+            await api.delete(`/userprofile/${userId}`);
+        } catch (error) {
+            console.error("Error deleting user profile:", error);
+            throw error;
+        }
     }
 };
 

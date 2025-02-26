@@ -50,6 +50,17 @@ const UserDashboard = () => {
             >
                 My Custom List
             </Button>
+            <Button
+                variant="contained"
+                sx={{
+                    mt: 50,
+                    backgroundColor: '#00d4ff',
+                    '&:hover': { backgroundColor: '#0f0fcf' },
+                }}
+                onClick={() => navigate('/admin')}
+            >
+                Admin Page
+            </Button>
         </Box>
     );
 };

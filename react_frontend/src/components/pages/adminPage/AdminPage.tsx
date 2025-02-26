@@ -8,7 +8,7 @@ const AdminPage = () => {
     return (
         <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" height="100vh">
             <Typography variant="h4" gutterBottom>Admin Dashboard</Typography>
-            <Button variant="contained" color="primary" onClick={() => navigate('/user-management')}>
+            <Button variant="contained" color="primary" onClick={() => navigate('/users')}>
                 Manage Users
             </Button>
             <Button variant="contained" color="secondary" onClick={() => navigate('/category-management')} style={{ marginTop: 10 }}>
