@@ -4,7 +4,7 @@ import { TextField, Typography, Box } from '@mui/material';
 interface DatePickerProps {
     id?: string;
     label?: string;
-    value: string; // value muss hier ein string im Format YYYY-MM-DD sein
+    value: string;
     onChange: (event: ChangeEvent<HTMLInputElement>) => void;
     error?: string;
     required?: boolean;

@@ -7,7 +7,7 @@ interface AvatarProps {
     alt?: string;
     size?: 'small' | 'medium' | 'large';
     className?: string;
-    sx?: SxProps<Theme>; // Korrekter Typ für sx
+    sx?: SxProps<Theme>;
 }
 
 const CustomAvatar: React.FC<AvatarProps> = ({ src, alt = 'Avatar', size = 'medium', className, sx }) => {
@@ -32,7 +32,7 @@ const CustomAvatar: React.FC<AvatarProps> = ({ src, alt = 'Avatar', size = 'medi
             src={src}
             alt={alt}
             className={className}
-            sx={{ ...sizeProps, ...sx }} // Kombiniere sizeProps und sx
+            sx={{ ...sizeProps, ...sx }}
         />
     );
 };

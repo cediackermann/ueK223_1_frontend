@@ -1,5 +1,4 @@
-// src/components/molecules/TextFieldWithLabel.tsx
-// Molecule: Ein Label und ein Textfeld kombiniert
+
 import React from 'react';
 import Label from '../atoms/Label';
 import Input from '../atoms/Input';

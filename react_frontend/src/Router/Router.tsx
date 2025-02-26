@@ -1,3 +1,4 @@
+
 import { Route, Routes } from 'react-router-dom';
 import LoginPage from '../components/pages/LoginPage/LoginPage';
 import PrivateRoute from './PrivateRoute';
@@ -7,8 +8,9 @@ import UserPage from '../components/pages/UserPage/UserPage';
 import AdminPage from '../components/pages/adminPage/AdminPage';
 import authorities from '../config/Authorities';
 import UserDashboard from "../components/pages/UserDashboard/UserDashboard";
-import UserProfile from '../components/pages/UserProfile/UserProfile';
-import CustomListPage from "../components/pages/CustomList";
+import CustomListPage from "../components/pages/EditProfile";
+import UserProfile from "../components/pages/UserProfile/UserProfile";
+
 
 /**
  * Router component renders a route switch with all available pages
@@ -44,6 +46,14 @@ const Router = () => {
                 }
             />
             <Route
+                path={'/Edit-Profile'}
+                element={
+                    <PrivateRoute requiredAuths={[authorities.LIST_MANAGE]}>
+                        <CustomListPage />
+                    </PrivateRoute>
+                }
+            />
+            <Route
                 path='/useredit'
                 element={
                     <PrivateRoute requiredAuths={[authorities.USER_DEACTIVATE, authorities.USER_CREATE]}>
@@ -64,14 +74,6 @@ const Router = () => {
                 element={
                     <PrivateRoute requiredAuths={[authorities.USER_CREATE]}>
                         <AdminPage />
-                    </PrivateRoute>
-                }
-            />
-            <Route
-                path={'/my-list'}
-                element={
-                    <PrivateRoute requiredAuths={[authorities.LIST_MANAGE]}>
-                        <CustomListPage />
                     </PrivateRoute>
                 }
             />

@@ -1,5 +1,4 @@
-// src/components/molecules/AvatarWithName.tsx
-// Molecule: Ein Avatar und ein Name kombiniert
+
 import React from 'react';
 import CustomAvatar from '../atoms/CustomAvatar';
 import { Typography } from '@mui/material';

@@ -1,11 +1,18 @@
 
 import React, { useEffect, useState } from 'react';
-import { Box, Typography, TextField, Button } from '@mui/material';
-import UserProfileService from '../../../Services/UserProfileService';
+import { Box, Typography, TextField, Button, List, ListItem, ListItemText } from '@mui/material';
+import CustomListService from '../../Services/CustomListService';
 import { useNavigate } from "react-router-dom";
+import UserProfileService from '../../Services/UserProfileService'; // Importiere den UserProfileService
 
-const UserProfile = () => {
-    const [profile, setProfile] = useState({ name: '', address: '', birthdate: '', age: '' });
+interface ListEntry {
+    id: string;
+    newTitle: string;
+    newText: string;
+}
+
+const CustomListPage = () => {
+    const [profile, setProfile] = useState({ name: '', address: '', birthdate: '', age: '' }); // State für das Profil
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
     const navigate = useNavigate();
@@ -52,14 +59,44 @@ const UserProfile = () => {
 
     if (loading) return <Typography>Loading...</Typography>;
     if (error) return <Typography color="error">{error}</Typography>;
+
     return (
         <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" height="100vh">
-            <Typography variant="h4">User Profile</Typography>
-            <TextField label="Name" value={profile.name} onChange={(e) => setProfile({ ...profile, name: e.target.value })} fullWidth margin="normal" />
-            <TextField label="Address" value={profile.address} onChange={(e) => setProfile({ ...profile, address: e.target.value })} fullWidth margin="normal" />
-            <TextField label="Birthdate" type="date" value={profile.birthdate} onChange={(e) => setProfile({ ...profile, birthdate: e.target.value })} fullWidth margin="normal" />
-            <TextField label="Age" value={profile.age} InputProps={{ readOnly: true }} fullWidth margin="normal" />
-            <Button variant="contained" color="primary" onClick={handleSave} style={{ marginTop: 10 }}>
+            <Typography variant="h4">Edit User Profile</Typography> {/* Geändert */}
+            <TextField
+                label="Name"
+                value={profile.name}
+                onChange={(e) => setProfile({ ...profile, name: e.target.value })}
+                fullWidth
+                margin="normal"
+                data-cy="name-field"
+            />
+            <TextField
+                label="Address"
+                value={profile.address}
+                onChange={(e) => setProfile({ ...profile, address: e.target.value })}
+                fullWidth
+                margin="normal"
+                data-cy="address-field"
+            />
+            <TextField
+                label="Birthdate"
+                type="date"
+                value={profile.birthdate}
+                onChange={(e) => setProfile({ ...profile, birthdate: e.target.value })}
+                fullWidth
+                margin="normal"
+                data-cy="birthdate-field"
+            />
+            <TextField
+                label="Age"
+                value={profile.age}
+                InputProps={{ readOnly: true }}
+                fullWidth
+                margin="normal"
+                data-cy="age-field"
+            />
+            <Button variant="contained" color="primary" onClick={handleSave} style={{ marginTop: 10 }}  data-cy="save-button">
                 Save Profile
             </Button>
             <Button
@@ -78,4 +115,4 @@ const UserProfile = () => {
     );
 };
 
-export default UserProfile;
+export default CustomListPage;

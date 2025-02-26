@@ -1,4 +1,3 @@
-// src/components/pages/adminPage/AdminPage.tsx
 import React from 'react';
 import { Box, Button, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
@@ -19,7 +18,7 @@ const AdminPage = () => {
                     backgroundColor: '#00d4ff',
                     '&:hover': { backgroundColor: '#0f0fcf' },
                 }}
-                onClick={() => navigate(-1)}
+                onClick={() => navigate('/dashboard')}
                 data-cy="go-back-button"
             >
                 Go Back

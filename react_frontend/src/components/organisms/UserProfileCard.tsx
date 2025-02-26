@@ -1,6 +1,4 @@
-// src/components/organisms/UserProfileCard.tsx
-// Organism: Zeigt die vollständigen Profilinformationen in einer Karte an.
-// Enthält Molecules (AvatarWithName) und Atoms (Typography).
+
 import React from 'react';
 import { Card, CardContent, Typography, Box } from '@mui/material';
 import AvatarWithName from '../molecules/AvatarWithName';

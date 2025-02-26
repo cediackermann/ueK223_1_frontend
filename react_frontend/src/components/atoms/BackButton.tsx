@@ -1,4 +1,4 @@
-// components/atoms/BackButton.tsx
+
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -11,7 +11,7 @@ const BackButton: React.FC<BackButtonProps> = ({children = "Go Back", className 
     const navigate = useNavigate();
 
     const handleGoBack = () => {
-        navigate(-1); // navigiert zur vorherigen Seite in der Browserhistorie
+        navigate(-1);
     };
 
     return (

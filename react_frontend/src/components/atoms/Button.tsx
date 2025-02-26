@@ -1,10 +1,10 @@
-// components/atoms/Button.tsx
+
 import React from 'react';
 
 interface ButtonProps {
     children: React.ReactNode;
     onClick?: () => void;
-    className?: string; // For custom styles
+    className?: string;
     variant?: 'primary' | 'secondary' | 'danger';
 }
 
