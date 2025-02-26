@@ -11,9 +11,6 @@ const AdminPage = () => {
             <Button variant="contained" color="primary" onClick={() => navigate('/users')}>
                 Manage Users
             </Button>
-            <Button variant="contained" color="secondary" onClick={() => navigate('/category-management')} style={{ marginTop: 10 }}>
-                Manage Categories
-            </Button>
         </Box>
     );
 };
