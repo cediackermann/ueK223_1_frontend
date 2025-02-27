@@ -29,12 +29,18 @@ const UserProfileService = {
   getAllUserProfiles: async (
     size?: number,
     page?: number,
-    sorting?: string
+    sorting?: string,
+    orderBy?: string
   ) => {
     try {
       let url = "/userprofile";
-      if (size !== undefined && page !== undefined && sorting !== undefined) {
-        url += `?size=${size}&page=${page}&sort=${sorting}`;
+      if (
+        size !== undefined &&
+        page !== undefined &&
+        sorting !== undefined &&
+        orderBy !== undefined
+      ) {
+        url += `?size=${size}&page=${page}&sort=${sorting},${orderBy}`;
       }
       const response = await api.get(url);
       return response.data;
