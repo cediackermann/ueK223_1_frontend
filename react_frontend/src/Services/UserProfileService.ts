@@ -27,17 +27,16 @@ const UserProfileService = {
 
   // Neue Methode: Alle UserProfiles abrufen (nur für Admins)
   getAllUserProfiles: async (
-    limit?: number,
-    offset?: number,
+    size?: number,
+    page?: number,
     sorting?: string
   ) => {
     try {
-      let url = "/userprofile/";
-      if (limit && offset && sorting) {
-        url += `?limit=${limit}&offset=${offset}&sorting=${sorting}`;
+      let url = "/userprofile";
+      if (size !== undefined && page !== undefined && sorting !== undefined) {
+        url += `?size=${size}&page=${page}&sort=${sorting}`;
       }
       const response = await api.get(url);
-      console.log(response.data);
       return response.data;
     } catch (error) {
       console.error("Error fetching all user profiles:", error);

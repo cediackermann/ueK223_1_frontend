@@ -1,51 +1,103 @@
 import { useEffect, useState } from "react";
 import UserProfileService from "../../../Services/UserProfileService";
-import Pagination from "@mui/material/Pagination";
 import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
+import TablePagination from "@mui/material/TablePagination";
+import { MenuItem, Select } from "@mui/material";
 
 export default function UserProfilePage() {
   const navigate = useNavigate();
+  const [userProfilesCount, setUserProfilesCount] = useState<number>(0);
   const [userProfiles, setUserProfiles] = useState([]);
-  const [pageCount, setPageCount] = useState<number>(0);
   const [pageable, setPageable] = useState<Pageable>({
-    limit: 10,
-    offset: 0,
+    size: 10,
+    page: 0,
     sorting: "id,asc",
   });
+  const [sortField, setSortField] = useState<string>("id");
+
+  const filterableFields = ["id", "address", "birthdate", "profilePictureUrl"];
+
+  const fetchPageSize = async () => {
+    try {
+      const allProfiles = await UserProfileService.getAllUserProfiles();
+      setUserProfilesCount(allProfiles.length);
+    } catch (error) {
+      console.error("Error fetching user profiles:", error);
+    }
+  };
+
+  const fetchData = async (pageable: Pageable) => {
+    try {
+      const paginatedProfiles = await UserProfileService.getAllUserProfiles(
+        pageable.size,
+        pageable.page,
+        pageable.sorting
+      );
+      setUserProfiles(paginatedProfiles);
+    } catch (error) {
+      console.error("Error fetching user profiles:", error);
+    }
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const allProfiles = await UserProfileService.getAllUserProfiles();
-        setPageCount(Math.ceil(allProfiles.length / pageable.limit));
+    fetchPageSize();
+  }, []);
 
-        const paginatedProfiles = await UserProfileService.getAllUserProfiles(
-          pageable.limit,
-          pageable.offset,
-          pageable.sorting
-        );
-        setUserProfiles(paginatedProfiles);
-      } catch (error) {
-        console.error("Error fetching user profiles:", error);
-      }
-    };
+  useEffect(() => {
+    fetchData(pageable);
+  }, [pageable, sortField]);
 
-    fetchData();
-  }, [pageable]);
+  const handleChangePage = (
+    event: React.MouseEvent<HTMLButtonElement> | null,
+    newPage: number
+  ) => {
+    setPageable((prev) => {
+      const updatedPageable = { ...prev, page: newPage };
+      return updatedPageable;
+    });
+  };
 
-  function handleEdit(id: any): void {
-    nagigate("");
+  const handleChangeRowsPerPage = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setPageable((prev) => {
+      const updatedPageable = {
+        ...prev,
+        size: parseInt(event.target.value, 10),
+        page: 0,
+      };
+      return updatedPageable;
+    });
+  };
+
+  function handleEdit(id: string) {
+    navigate("/Edit-Profile/" + id);
   }
+
+  const handleSortChange = (field: string) => {
+    setSortField(field);
+  };
   return (
     <>
       <h1>User Profiles</h1>
+      <Select
+        value={sortField}
+        onChange={(e) => handleSortChange(e.target.value)}
+      >
+        {filterableFields.map((key) => (
+          <MenuItem key={key} value={key}>
+            Sort by {key}
+          </MenuItem>
+        ))}
+      </Select>
       {userProfiles.map(
         (profile: {
           address: string;
           age: number;
           birthdate: string;
           profilePictureUrl: string;
+          id: string;
         }) => (
           <div key={profile.profilePictureUrl}>
             <img
@@ -59,23 +111,27 @@ export default function UserProfilePage() {
               size='small'
               color='primary'
               variant='contained'
-              onClick={() => handleEdit(user.id)}
+              onClick={() => handleEdit(profile.id)}
             >
               Edit
             </Button>
           </div>
         )
       )}
-      <Pagination count={pageCount} />
+      <TablePagination
+        component='div'
+        count={userProfilesCount}
+        page={pageable.page}
+        onPageChange={handleChangePage}
+        rowsPerPage={pageable.size}
+        onRowsPerPageChange={handleChangeRowsPerPage}
+      />
     </>
   );
 }
 
 interface Pageable {
-  limit: number;
-  offset: number;
+  size: number;
+  page: number;
   sorting: string;
-}
-function nagigate(arg0: string) {
-  throw new Error("Function not implemented.");
 }
