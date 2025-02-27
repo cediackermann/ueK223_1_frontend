@@ -48,7 +48,7 @@ const Router = () => {
       <Route
         path={"/profile"}
         element={
-          <PrivateRoute requiredAuths={[authorities.PROFILE_EDIT]}>
+          <PrivateRoute requiredAuths={[]}>
             <UserProfile />
           </PrivateRoute>
         }
