@@ -1,9 +1,9 @@
 import api from "../config/Api";
 
 const UserProfileService = {
-  getUserProfile: async () => {
+  getUserProfile: async (id: string) => {
     try {
-      const response = await api.get("/user/profile");
+      const response = await api.get(`/userprofile/${id}`);
       return response.data;
     } catch (error) {
       console.error("Error fetching user profile:", error);
@@ -12,12 +12,16 @@ const UserProfileService = {
   },
 
   updateUserProfile: async (profileData: {
-    name: string;
+    id: string;
     address: string;
-    birthdate: string;
+    birthDate: string;
+    profilePictureUrl: string;
   }) => {
     try {
-      const response = await api.put("/user/profile", profileData);
+      const response = await api.put(
+        `/userprofile/${profileData.id}`,
+        profileData
+      );
       return response.data;
     } catch (error) {
       console.error("Error updating user profile:", error);
