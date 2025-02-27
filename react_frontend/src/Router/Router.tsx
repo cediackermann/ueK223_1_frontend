@@ -8,7 +8,6 @@ import AdminPage from "../components/pages/adminPage/AdminPage";
 import authorities from "../config/Authorities";
 import UserDashboard from "../components/pages/UserDashboard/UserDashboard";
 import CustomListPage from "../components/pages/EditProfile";
-import UserProfile from "../components/pages/UserProfile/UserProfile";
 import UserProfilePage from "../components/pages/userProfilePage/UserProfilePage";
 
 /**
@@ -42,14 +41,6 @@ const Router = () => {
         element={
           <PrivateRoute requiredAuths={[]}>
             <UserDashboard />
-          </PrivateRoute>
-        }
-      />
-      <Route
-        path={"/profile"}
-        element={
-          <PrivateRoute requiredAuths={[authorities.PROFILE_EDIT]}>
-            <UserProfile />
           </PrivateRoute>
         }
       />
