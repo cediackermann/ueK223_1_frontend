@@ -1,4 +1,4 @@
-// src/components/molecules/FormRow.tsx
+
 import React from 'react';
 import Label from '../atoms/Label';
 import Input from '../atoms/Input';
@@ -6,8 +6,8 @@ import Input from '../atoms/Input';
 interface FormRowProps {
     label: string;
     id: string;
-    type: 'text' | 'email' | 'password' | 'date' | 'number'; // Korrekter Typ!
-    value: string; // value muss ein String sein, da es von Input kommt
+    type: 'text' | 'email' | 'password' | 'date' | 'number';
+    value: string;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     error?: string;
 }
