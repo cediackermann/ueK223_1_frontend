@@ -15,7 +15,7 @@ export default function UserProfilePage() {
     sorting: "id",
     orderBy: "asc",
   });
-  const filterableFields = ["id", "address", "birthdate", "profilePictureUrl"];
+  const filterableFields = ["id", "address", "birthDate", "profilePictureUrl"];
   const orderByOptions = ["asc", "desc"];
 
   const fetchPageSize = async () => {
