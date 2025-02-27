@@ -12,11 +12,11 @@ export default function UserProfilePage() {
   const [pageable, setPageable] = useState<Pageable>({
     size: 10,
     page: 0,
-    sorting: "id,asc",
+    sorting: "id",
+    orderBy: "asc",
   });
-  const [sortField, setSortField] = useState<string>("id");
-
   const filterableFields = ["id", "address", "birthdate", "profilePictureUrl"];
+  const orderByOptions = ["asc", "desc"];
 
   const fetchPageSize = async () => {
     try {
@@ -32,7 +32,8 @@ export default function UserProfilePage() {
       const paginatedProfiles = await UserProfileService.getAllUserProfiles(
         pageable.size,
         pageable.page,
-        pageable.sorting
+        pageable.sorting,
+        pageable.orderBy
       );
       setUserProfiles(paginatedProfiles);
     } catch (error) {
@@ -46,7 +47,7 @@ export default function UserProfilePage() {
 
   useEffect(() => {
     fetchData(pageable);
-  }, [pageable, sortField]);
+  }, [pageable]);
 
   const handleChangePage = (
     event: React.MouseEvent<HTMLButtonElement> | null,
@@ -76,18 +77,36 @@ export default function UserProfilePage() {
   }
 
   const handleSortChange = (field: string) => {
-    setSortField(field);
+    setPageable((prev) => {
+      const updatedPageable = { ...prev, sorting: field };
+      return updatedPageable;
+    });
   };
   return (
     <>
       <h1>User Profiles</h1>
       <Select
-        value={sortField}
+        value={pageable.sorting}
         onChange={(e) => handleSortChange(e.target.value)}
       >
         {filterableFields.map((key) => (
           <MenuItem key={key} value={key}>
             Sort by {key}
+          </MenuItem>
+        ))}
+      </Select>
+      <Select
+        value={pageable.orderBy}
+        onChange={(e) =>
+          setPageable((prev) => {
+            const updatedPageable = { ...prev, orderBy: e.target.value };
+            return updatedPageable;
+          })
+        }
+      >
+        {orderByOptions.map((key) => (
+          <MenuItem key={key} value={key}>
+            Order by {key}
           </MenuItem>
         ))}
       </Select>
@@ -134,4 +153,5 @@ interface Pageable {
   size: number;
   page: number;
   sorting: string;
+  orderBy: string;
 }

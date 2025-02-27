@@ -10,6 +10,7 @@
     "@mui/material": "^5.10.7",
     "@mui/styles": "^5.10.7",
     "@mui/x-data-grid": "^5.17.23",
+    "@mui/x-date-pickers": "^7.27.1",
     "@types/jest": "^27.5.2",
     "@types/jsonwebtoken": "^8.5.9",
     "@types/node": "^16.11.62",
