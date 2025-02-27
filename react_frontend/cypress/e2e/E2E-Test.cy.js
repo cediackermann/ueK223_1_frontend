@@ -49,6 +49,7 @@ describe('E2E Test for App Functionality', () => {
 
         // Login-Button klicke
         cy.get('button[type="submit"]').should('be.visible').click();
+        cy.wait(1000);
 
 
         // Click the Admin Page button
@@ -63,4 +64,30 @@ describe('E2E Test for App Functionality', () => {
         // Assert that we are on the users page
         cy.url().should('include', '/users');
     });
+
+    it('Should navigate to Admin Page and User Profiles', () => {
+        cy.visit(`${baseUrl}/login`);
+        localStorage.clear();
+        // Login-Felder richtig fülle
+        cy.get('#email').should('be.visible').type(adminEmail);
+        cy.get('#password').should('be.visible').type(adminPassword);
+
+        // Login-Button klicke
+        cy.get('button[type="submit"]').should('be.visible').click();
+        cy.wait(1000);
+
+
+        // Click the Admin Page button
+        cy.contains('button', 'Admin Page').should('be.visible').click();
+
+        // Assert that we are on the admin page
+        cy.url().should('include', '/admin');
+
+        // Click the Manage Users button
+        cy.contains('button', 'User Profiles').should('be.visible').click();
+
+        // Assert that we are on the users page
+        cy.url().should('include', '/userProfiles');
+    });
+
 });
