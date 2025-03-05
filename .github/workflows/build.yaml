@@ -20,4 +20,6 @@ jobs:
         with:
           node-version: 20
       - run: npm ci
+        working-directory: ./react_frontend
       - run: npm test
+        working-directory: ./react_frontend
