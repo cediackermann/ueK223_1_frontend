@@ -14,9 +14,9 @@ jobs:
           node-version: 20.x
 
       - name: Run install
-        uses: borales/actions-yarn@v4
-        with:
-          cmd: install # will run `yarn install` command
+        run: |
+          cd ./react_frontend
+          yarn install
       - name: Build production bundle
         uses: borales/actions-yarn@v4
         with:
@@ -25,9 +25,4 @@ jobs:
         uses: borales/actions-yarn@v4
         with:
           cmd: test # will run `yarn test` command
-
-      - name: Run test in sub-folder
-        uses: borales/actions-yarn@v4
-        with:
-          cmd: test
-          dir: "frontend" # will run `yarn test` in `frontend` sub folder
+          dir: "react_frontend"
