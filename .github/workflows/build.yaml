@@ -14,13 +14,15 @@ jobs:
           node-version: 20.x
 
       - name: Run install
-        run: |
-          cd ./react_frontend
-          yarn install
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: install # will run `yarn install` command
+          dir: "react_frontend"
       - name: Build production bundle
         uses: borales/actions-yarn@v4
         with:
           cmd: build:prod # will run `yarn build:prod` command
+          dir: "react_frontend"
       - name: Test the app
         uses: borales/actions-yarn@v4
         with:
