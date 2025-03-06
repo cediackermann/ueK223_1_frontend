@@ -8,7 +8,7 @@ COPY ./react_frontend/.env.production .
 COPY ./react_frontend/public ./public
 COPY ./react_frontend/src ./src
 # Runs npm install to create node_modules for your app
-RUN yarn install --production
+RUN yarn install --production --network-timeout 100000
 # builds the production version of the app
 ENV NODE_OPTIONS=--openssl-legacy-provider
 RUN yarn build
