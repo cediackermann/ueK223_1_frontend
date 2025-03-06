@@ -28,7 +28,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/frontend_uek223:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/frontend_uek223
           platforms: linux/amd64
   deploy:
     needs: build-and-push
