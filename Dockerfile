@@ -18,6 +18,7 @@ FROM nginx:alpine
 COPY --from=builder /app/build /usr/share/nginx/html
 # Copy config files
 COPY ./react_frontend/.env.production .
+RUN pwd
 COPY ./react_frontend/nginx.conf /etc/nginx/conf.d/default.conf
 # Expose port 80
 EXPOSE 80
