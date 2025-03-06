@@ -16,7 +16,7 @@ jobs:
       - name: Run install
         uses: borales/actions-yarn@v4
         with:
-          cmd: install # will run `yarn install` command
+          cmd: install --network-timeout 100000000
           dir: "react_frontend"
       - name: Test the app
         uses: borales/actions-yarn@v4
